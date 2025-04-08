@@ -1,0 +1,9 @@
+version: "3"
+services:
+  watchtower:
+    image: jplegat/watchtower-riscv64:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    command: glances pihole nginx --interval 14400 --remove-volumes --cleanup
